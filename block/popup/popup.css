@@ -8,9 +8,10 @@
 @import url(__button-text/popup__button-text.css);
 @import url(__input-name/popup__input-name.css);
 @import url(__input-job/popup__input-job.css);
-.popup{
+
+.popup {
     width: 100%;
     height: 100%;
     position: absolute;
-    background-color:rgba(0, 0, 0, 0.5 );
+    background-color: rgba(0, 0, 0, 0.5);
 }

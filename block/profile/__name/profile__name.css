@@ -1,4 +1,4 @@
-.profile__name{
+.profile__name {
     margin: 0;
     max-width: 295px;
     font-family: Inter;
@@ -9,11 +9,13 @@
     color: #FFFFFF;
 
 }
+
 @media screen and (max-width: 700px) {
     .profile__name {
         text-align: center;
     }
 }
+
 @media screen and (max-width: 320px) {
     .profile__name {
         max-width: 201px;

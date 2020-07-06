@@ -1,4 +1,4 @@
-.cards__like{
+.cards__like {
     width: 21px;
     height: 19px;
     border: none;
@@ -12,6 +12,7 @@
 
 
 }
-.cards__like:focus{
+
+.cards__like:focus {
     outline: none;
 }

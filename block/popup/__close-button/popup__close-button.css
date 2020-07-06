@@ -1,4 +1,4 @@
-.popup__close-button{
+.popup__close-button {
     width: 41px;
     height: 41px;
     background-image: url("../../../images/close.svg");
@@ -10,9 +10,11 @@
     padding: 0;
     align-self: flex-end;
 }
-.popup__close-button:focus{
+
+.popup__close-button:focus {
     outline: none;
 }
-.popup__close-button:hover{
+
+.popup__close-button:hover {
     opacity: .8;
 }

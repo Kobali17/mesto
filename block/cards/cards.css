@@ -2,16 +2,18 @@
 @import url(__like/cards__like.css);
 @import url(__text/cards__text.css);
 @import url(__info/cards__info.css);
-.cards{
+
+.cards {
     width: 282px;
     display: grid;
     grid-template-columns: 282px;
 
 
 }
+
 @media screen and (max-width: 620px) {
     .cards {
-        margin: 20px 0 0 ;
+        margin: 20px 0 0;
 
     }
 }

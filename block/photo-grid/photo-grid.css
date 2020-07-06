@@ -2,9 +2,10 @@
     max-width: 882px;
     margin: 76px auto 0;
     display: grid;
-    grid-template-columns:repeat(auto-fit,minmax(282px, 1fr)) ;
+    grid-template-columns:repeat(auto-fit, minmax(282px, 1fr));
     grid-gap: 21px 18px;
 }
+
 @media screen and (max-width: 620px) {
     .photo-grid {
         display: flex;
