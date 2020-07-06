@@ -1,0 +1,16 @@
+.popup__input-job{
+    margin: 30px 0 0 ;
+    width: 358px;
+    font-family: inherit;
+    border:0;
+    border-bottom:1px rgba(0,0,0, 0.2) solid;
+
+}
+.popup__input-job:focus{
+    outline: none;
+}
+@media screen and (max-width: 320px) {
+    .popup__input-job{
+        width: 290px;
+    }
+}

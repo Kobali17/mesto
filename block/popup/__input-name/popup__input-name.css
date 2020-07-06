@@ -1,0 +1,16 @@
+.popup__input-name{
+    width: 358px;
+    margin: 54px 0 0 ;
+    font-family: inherit;
+    border:0;
+    border-bottom:1px rgba(0,0,0, 0.2) solid;
+
+}
+.popup__input-name:focus{
+    outline: none;
+}
+@media screen and (max-width: 320px) {
+    .popup__input-name{
+        width: 290px;
+    }
+}

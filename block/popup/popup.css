@@ -1,0 +1,16 @@
+@import url(__close-button/popup__close-button.css);
+@import url(__container/popup__container.css);
+@import url(__opened/popup__hide.css);
+@import url(__window/popup__window.css);
+@import url(__title/popup__title.css);
+@import url(__form/popup__form.css);
+@import url(__save-button/popup__save-button.css);
+@import url(__button-text/popup__button-text.css);
+@import url(__input-name/popup__input-name.css);
+@import url(__input-job/popup__input-job.css);
+.popup{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color:rgba(0, 0, 0, 0.5 );
+}
