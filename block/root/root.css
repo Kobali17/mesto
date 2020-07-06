@@ -4,4 +4,6 @@
     min-width: 300px;
     background-color: #000000;
     position: relative;
+    font-family: Inter, 'Arial', sans-serif;
+    text-rendering: optimizeLegibility;
 }

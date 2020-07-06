@@ -9,7 +9,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+
 }
 
 .popup__save-button:focus {
