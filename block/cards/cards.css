@@ -6,9 +6,6 @@
 .cards {
     width: 282px;
     display: grid;
-    grid-template-columns: 282px;
-
-
 }
 
 

@@ -1,5 +1,6 @@
 .profile__avatar {
     width: 120px;
     height: 120px;
-    background-image: url("../../../images/avatar.svg");
+    background-image: url("../../../images/avatar.jpg");
+    border-radius: 50%;
 }

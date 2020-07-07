@@ -8,4 +8,4 @@
 @import url(../block/root/root.css);
 @import url(../block/footer/footer.css);
 @import url(../block/cards/cards.css);
-
+@import url(../block/popup/_opened/popup_opened.css);

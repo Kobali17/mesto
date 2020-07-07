@@ -12,9 +12,11 @@
 
 
 }
-.cards__like:hover{
+
+.cards__like:hover {
     opacity: .3;
 }
+
 .cards__like:focus {
     outline: none;
 }
