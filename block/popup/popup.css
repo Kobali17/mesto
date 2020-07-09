@@ -5,6 +5,7 @@
 @import url(__form/popup__form.css);
 @import url(__save-button/popup__save-button.css);
 @import url(__input/popup__input.css);
+@import url(__window-content/popup__window-content.css);
 
 .popup {
     width: 100%;
