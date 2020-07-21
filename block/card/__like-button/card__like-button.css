@@ -1,4 +1,4 @@
-.cards__like {
+.card__like-button {
     width: 21px;
     height: 19px;
     border: none;
@@ -11,10 +11,11 @@
     padding: 0;
 }
 
-.cards__like:hover {
+.card__like-button:hover {
     opacity: .3;
 }
 
-.cards__like:focus {
+.card__like-button:focus {
     outline: none;
+
 }

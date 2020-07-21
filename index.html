@@ -9,10 +9,8 @@
 <body class="root">
 <header class="header">
     <img class="header__logo" src="images/logo.svg" alt="Логотип Место">
-
 </header>
 <main class="main">
-
     <section class="profile">
         <div class="profile__first">
             <div class="profile__avatar">
@@ -23,77 +21,67 @@
                 <p class="profile__job">Исследователь океана</p>
             </div>
         </div>
-        <button type="button" class="profile__add-button"></button>
+        <button type="button" class="profile__add-card-button"></button>
     </section>
     <section class="photo-grid">
-        <div class="cards">
-            <img class="cards__img" src="images/kara-1.png" alt="Карачаевск">
-            <div class="cards__info">
-                <h3 class="cards__text">Карачаевск</h3>
-                <button type="button" class="cards__like"></button>
-            </div>
-        </div>
-
-        <div class="cards">
-            <img class="cards__img" src="images/elb-1.png" alt="Эльбрус">
-            <div class="cards__info">
-                <h3 class="cards__text">Гора Эльбрус</h3>
-                <button type="button" class="cards__like"></button>
-            </div>
-        </div>
-
-        <div class="cards">
-            <img class="cards__img" src="images/domb.png" alt="Домбай">
-            <div class="cards__info">
-                <h3 class="cards__text">Домбай</h3>
-                <button type="button" class="cards__like"></button>
-            </div>
-        </div>
-
-        <div class="cards">
-            <img class="cards__img" src="images/elb-1.png" alt="Эльбрус">
-            <div class="cards__info">
-                <h3 class="cards__text">Гора Эльбрус</h3>
-                <button type="button" class="cards__like"></button>
-            </div>
-        </div>
-
-        <div class="cards">
-            <img class="cards__img" src="images/domb.png" alt="Домбай">
-            <div class="cards__info">
-                <h3 class="cards__text">Домбай</h3>
-                <button type="button" class="cards__like"></button>
-            </div>
-        </div>
-        <div class="cards">
-            <img class="cards__img" src="images/kara-1.png" alt="Карачаевск">
-            <div class="cards__info">
-                <h3 class="cards__text">Карачаево-Черкесия</h3>
-                <button type="button" class="cards__like"></button>
-            </div>
-        </div>
     </section>
 </main>
 <footer class="footer">
     <p class="footer__text">&copy; 2020 Mesto Russia</p>
 </footer>
-<section class="popup">
-    <div class="popup__container">
 
-        <button class="popup__close-button"></button>
+<div id="edit" class="popup">
+    <div class="popup__container">
+        <button id="name-close" class="popup__close-button"></button>
         <div class="popup__window">
             <div class="popup__window-content">
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form name="profileInfo" class="popup__form" method="get">
+                <form id="profile-form" name="profileInfo" class="popup__form" method="get">
                     <input id="name" required placeholder="Имя" type="text" name="name" class="popup__input">
                     <input id="job" required placeholder="Профессия" type="text" name="job" class="popup__input">
                     <button type="submit" class="popup__save-button">Сохранить</button>
                 </form>
             </div>
         </div>
-
     </div>
-</section>
+</div>
+<div id="photo-add" class="popup">
+    <div class="popup__container">
+        <button id="card-add-close" class="popup__close-button"></button>
+        <div class="popup__window">
+            <div class="popup__window-content">
+                <h2 class="popup__title">Новое место</h2>
+                <form id="photo-form" name="profileInfo" class="popup__form" method="get">
+                    <input id="place" required placeholder="Название" type="text" name="place" class="popup__input">
+                    <input id="link" required placeholder="Ссылка на картинку" type="text" name="link"
+                           class="popup__input">
+                    <button type="submit" class="popup__save-button">Создать</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup-photo">
+    <div class="popup-photo__container">
+        <button id="photo-close" class="popup-photo__close-button"></button>
+        <img class="popup-photo__img">
+        <p class="popup-photo__text"></p>
+    </div>
+</div>
+<template id="card">
+    <div class="card">
+        <button type="button" class="card__del-button"></button>
+        <div class="card__img">
+        </div>
+        <div class="card__info">
+            <h3 class="card__text"></h3>
+            <button type="button" class="card__like-button"></button>
+        </div>
+    </div>
+</template>
+
+
 <script src="scripts/script.js"></script>
 </body>
 </html>

@@ -4,8 +4,10 @@
 @import url(../block/main/main.css);
 @import url(../block/photo-grid/photo-grid.css);
 @import url(../block/popup/popup.css);
+@import url(../block/popup__photo/popup__photo.css);
 @import url(../block/profile/profile.css);
 @import url(../block/root/root.css);
 @import url(../block/footer/footer.css);
-@import url(../block/cards/cards.css);
+@import url(../block/card/card.css);
 @import url(../block/popup/_opened/popup_opened.css);
+@import url(../block/card/_liked/card_liked.css);
