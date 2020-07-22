@@ -43,33 +43,42 @@ const initialCards = [
     }
 ];
 
-function AddNewCard(link, place) {
+function createCard(link, place) {
     const startCard = templateCard.cloneNode(true).content;
     const cardImg = startCard.querySelector('.card__img');
     const cardText = startCard.querySelector('.card__text');
     const likeButton = startCard.querySelector('.card__like-button');
     const delButton = startCard.querySelector('.card__del-button');
-    cardImg.style.backgroundImage = `url(${link}) `;
+    cardImg.src = link;
+    cardImg.alt = place;
     cardText.innerText = place;
     likeButton.addEventListener('click', toggleCardLiked)
     delButton.addEventListener('click', delCard)
     cardImg.addEventListener('click', function () {
-        let photoPopupImg = document.querySelector('.popup-photo__img');
+        const photoPopupImg = document.querySelector('.popup-photo__img');
         photoPopupImg.src = link;
-        let popupText = document.querySelector('.popup-photo__text');
+        const popupText = document.querySelector('.popup-photo__text');
         popupText.innerText = place;
         photoPopup.classList.toggle("popup_opened");
     })
-    photoGrid.appendChild(startCard);
+    return startCard
+}
+
+function renderCard(card) {
+    photoGrid.appendChild(card);
+}
+
+function addNewCard(link, place) {
+    const newCard = createCard(link, place);
+    renderCard(newCard)
 }
 
 function photoSubmitHandler(evt) {
     evt.preventDefault();
-    let link = linkInput.value;
-    let place = placeInput.value;
-    AddNewCard(link, place);
+    const link = linkInput.value;
+    const place = placeInput.value;
+    addNewCard(link, place);
     toggleAddPopup();
-
 }
 
 function toggleEditPopup() {
@@ -102,13 +111,13 @@ function profileFormSubmitHandler(evt) {
 }
 
 function delCard(event) {
-    let startCard = event.target.closest('.card')
+    const startCard = event.target.closest('.card')
     startCard.remove()
 }
 
 function startCards() {
     initialCards.forEach(function (item) {
-        AddNewCard(item.link, item.place);
+        addNewCard(item.link, item.place);
     })
 }
 

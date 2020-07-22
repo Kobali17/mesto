@@ -1,9 +1,5 @@
 .card__img {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-
-    max-width: 281px;
+    width: 281px;
     height: 282px;
 
 }

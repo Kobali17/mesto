@@ -1,4 +1,4 @@
-https://github.com/Kobali17/mesto
+https://kobali17.github.io/mesto/
 Первый проект с использованием JavaScript.
 Не требуется дополниельных установок.
 Адаптив, медиазапросы.
