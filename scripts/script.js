@@ -16,6 +16,8 @@ const templateCard = document.querySelector('#card');
 const photoGrid = document.querySelector('.photo-grid');
 const linkInput = document.querySelector('#link');
 const placeInput = document.querySelector('#place');
+const popupText = document.querySelector('.popup-photo__text');
+const photoPopupImg = document.querySelector('.popup-photo__img');
 const initialCards = [
     {
         place: 'Архыз',
@@ -55,9 +57,7 @@ function createCard(link, place) {
     likeButton.addEventListener('click', toggleCardLiked)
     delButton.addEventListener('click', delCard)
     cardImg.addEventListener('click', function () {
-        const photoPopupImg = document.querySelector('.popup-photo__img');
         photoPopupImg.src = link;
-        const popupText = document.querySelector('.popup-photo__text');
         popupText.innerText = place;
         photoPopup.classList.toggle("popup_opened");
     })
