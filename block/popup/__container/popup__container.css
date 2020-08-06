@@ -3,7 +3,7 @@
     height: 371px;
     display: flex;
     flex-direction: column;
-    z-index: 100;
+
 }
 
 @media screen and (max-width: 400px) {

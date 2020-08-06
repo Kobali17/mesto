@@ -17,8 +17,12 @@
     border-bottom: 1px rgba(0, 0, 0, 0.7) solid;
 }
 
+.popup__input:invalid {
+    border-bottom: 1px #FF0000 solid;
+}
+
 .popup__input:last-of-type {
-    margin: 30px 0 0;
+    margin: 13px 0 0;
 
 }
 
@@ -38,3 +42,7 @@
 
     }
 }
+
+/*.popup__input:valid {*/
+/*    border-bottom: 1px rgba(48, 208, 11, 0.7) solid;*/
+/*}*/

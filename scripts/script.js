@@ -1,23 +1,19 @@
 const profileEditButton = document.querySelector(".profile__edit-button");
 const cardAddButton = document.querySelector(".profile__add-card-button");
+const nameInput = document.querySelector('#name');
+const jobInput = document.querySelector('#job');
 const popupNameCloseButton = document.querySelector('#name-close');
 const popupPhotoCloseButton = document.querySelector('#photo-close');
 const popupAddCloseButton = document.querySelector('#card-add-close');
-const nameInput = document.querySelector('#name');
-const jobInput = document.querySelector('#job');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
 const formNameElement = document.querySelector('#profile-form');
 const formPhotoElement = document.querySelector('#photo-form');
 const popupAdd = document.querySelector('#photo-add');
-const popupEdit = document.querySelector('#edit');
-const photoPopup = document.querySelector('.popup-photo');
-const templateCard = document.querySelector('#card');
-const photoGrid = document.querySelector('.photo-grid');
 const linkInput = document.querySelector('#link');
 const placeInput = document.querySelector('#place');
 const popupText = document.querySelector('.popup-photo__text');
-const photoPopupImg = document.querySelector('.popup-photo__img');
+const overlay = document.querySelector('.popup__overlay');
 const initialCards = [
     {
         place: 'Архыз',
@@ -45,7 +41,9 @@ const initialCards = [
     }
 ];
 
-function createCard(link, place) {
+const createCard = (link, place) => {
+    const templateCard = document.querySelector('#card');
+    const photoPopupImg = document.querySelector('.popup-photo__img');
     const startCard = templateCard.cloneNode(true).content;
     const cardImg = startCard.querySelector('.card__img');
     const cardText = startCard.querySelector('.card__text');
@@ -59,21 +57,22 @@ function createCard(link, place) {
     cardImg.addEventListener('click', function () {
         photoPopupImg.src = link;
         popupText.innerText = place;
-        photoPopup.classList.toggle("popup_opened");
+        togglePhotoPopup()
     })
     return startCard
 }
 
-function renderCard(card) {
+const renderCard = (card) => {
+    const photoGrid = document.querySelector('.photo-grid');
     photoGrid.appendChild(card);
 }
 
-function addNewCard(link, place) {
+const addNewCard = (link, place) => {
     const newCard = createCard(link, place);
     renderCard(newCard)
 }
 
-function photoSubmitHandler(evt) {
+const photoSubmitHandler = (evt) => {
     evt.preventDefault();
     const link = linkInput.value;
     const place = placeInput.value;
@@ -81,48 +80,78 @@ function photoSubmitHandler(evt) {
     toggleAddPopup();
 }
 
-function toggleEditPopup() {
+const toggleEditPopup = () => {
+    const popupEdit = document.querySelector('#edit');
     popupEdit.classList.toggle("popup_opened");
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
+    overlayToggle();
+    firstPopupValid(popupEdit);
 
 }
 
-function toggleAddPopup() {
+const overlayToggle = () => {
+    overlay.classList.toggle('popup_opened');
+}
+
+const toggleAddPopup = () => {
     popupAdd.classList.toggle("popup_opened");
     placeInput.value = "";
     linkInput.value = "";
+    overlayToggle();
+    firstPopupValid(popupAdd)
 
 }
 
-function togglePhotoPopup() {
+const togglePhotoPopup = () => {
+    const photoPopup = document.querySelector('.popup-photo');
     photoPopup.classList.toggle("popup_opened");
+    overlayToggle();
+
 }
 
-function toggleCardLiked(event) {
-    event.target.classList.toggle("card_liked");
+const toggleCardLiked = (evt) => {
+    evt.target.classList.toggle("card_liked");
 }
 
-function profileFormSubmitHandler(evt) {
+const profileFormSubmitHandler = (evt) => {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
     toggleEditPopup();
 }
 
-function delCard(event) {
+const delCard = (event) => {
     const startCard = event.target.closest('.card')
     startCard.remove()
 }
 
-function startCards() {
+const startCards = () => {
     initialCards.forEach(function (item) {
         addNewCard(item.link, item.place);
     })
 }
 
+const closeOpenedPopup = () => {
+    const openedPopups = document.querySelectorAll(".popup_opened");
+    openedPopups.forEach(function (item) {
+        item.classList.remove('popup_opened')
+    })
+}
+
+const escClosePopup = (evt) => {
+    if (evt.key === 'Escape') {
+        closeOpenedPopup()
+    }
+
+}
+
+
 startCards()
-formPhotoElement.addEventListener('submit', photoSubmitHandler)
+
+document.addEventListener('keydown', escClosePopup)
+overlay.addEventListener('click', closeOpenedPopup);
+formPhotoElement.addEventListener('submit', photoSubmitHandler);
 formNameElement.addEventListener('submit', profileFormSubmitHandler);
 profileEditButton.addEventListener('click', toggleEditPopup);
 cardAddButton.addEventListener('click', toggleAddPopup);
