@@ -13,7 +13,7 @@ const popupAdd = document.querySelector('#photo-add');
 const linkInput = document.querySelector('#link');
 const placeInput = document.querySelector('#place');
 const popupText = document.querySelector('.popup-photo__text');
-const overlay = document.querySelector('.popup__overlay');
+const overlay = document.querySelector('.overlay');
 const initialCards = [
     {
         place: 'Архыз',
@@ -62,16 +62,14 @@ const createCard = (link, place) => {
     return startCard
 }
 
-const renderCard = (card) => {
-    const photoGrid = document.querySelector('.photo-grid');
-    photoGrid.appendChild(card);
-}
-
 const addNewCard = (link, place) => {
     const newCard = createCard(link, place);
     renderCard(newCard)
 }
-
+const renderCard = (card) => {
+    const photoGrid = document.querySelector('.photo-grid');
+    photoGrid.prepend(card);
+}
 const photoSubmitHandler = (evt) => {
     evt.preventDefault();
     const link = linkInput.value;
@@ -86,12 +84,14 @@ const toggleEditPopup = () => {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
     overlayToggle();
-    firstPopupValid(popupEdit);
+    validatePopup(popupEdit, validationConfig);
 
 }
 
 const overlayToggle = () => {
     overlay.classList.toggle('popup_opened');
+    document.addEventListener('keydown', escClosePopup);
+
 }
 
 const toggleAddPopup = () => {
@@ -99,7 +99,8 @@ const toggleAddPopup = () => {
     placeInput.value = "";
     linkInput.value = "";
     overlayToggle();
-    firstPopupValid(popupAdd)
+    validatePopup(popupAdd, validationConfig);
+
 
 }
 
@@ -137,11 +138,15 @@ const closeOpenedPopup = () => {
     openedPopups.forEach(function (item) {
         item.classList.remove('popup_opened')
     })
+    document.removeEventListener('keydown', escClosePopup)
+
 }
 
 const escClosePopup = (evt) => {
     if (evt.key === 'Escape') {
         closeOpenedPopup()
+
+
     }
 
 }
@@ -149,7 +154,7 @@ const escClosePopup = (evt) => {
 
 startCards()
 
-document.addEventListener('keydown', escClosePopup)
+
 overlay.addEventListener('click', closeOpenedPopup);
 formPhotoElement.addEventListener('submit', photoSubmitHandler);
 formNameElement.addEventListener('submit', profileFormSubmitHandler);
