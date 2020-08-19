@@ -13,30 +13,30 @@ class FormValidator {
         this.element.addEventListener('submit', function (evt) {
             evt.preventDefault();
         });
-        this._setEventListeners(this.element, openButton)
+        this._setEventListeners(openButton)
     }
 
-    _setEventListeners(popup, openButton) {
+    _setEventListeners(openButton) {
         // навешивает слушатели на массив инпутов
         // здесь же можно вставить активацию кнопки
-        const inputList = Array.from(popup.querySelectorAll(this.inputSelector));
-        const buttonElement = popup.querySelector(this.submitButtonSelector);
+        const inputList = Array.from(this.element.querySelectorAll(this.inputSelector));
+        const buttonElement = this.element.querySelector(this.submitButtonSelector);
         openButton.addEventListener('click', () => {
-            this._validatePopup(popup)
+            this._validatePopup()
         })
         this._toggleButton(inputList, buttonElement);
         inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
-                this._inputValidity(popup, inputElement);
+                this._inputValidity(this.element, inputElement);
                 this._toggleButton(inputList, buttonElement);
             });
         });
     };
 
-    _validatePopup(popup) {
+    _validatePopup() {
         //проверка валидности при открытии попапа
-        const buttonElement = popup.querySelector(this.submitButtonSelector);
-        const inputList = Array.from(popup.querySelectorAll(this.inputSelector));
+        const buttonElement = this.element.querySelector(this.submitButtonSelector);
+        const inputList = Array.from(this.element.querySelectorAll(this.inputSelector));
         this._toggleButton(inputList, buttonElement);
 
     }
