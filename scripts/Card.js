@@ -3,10 +3,6 @@ class Card {
         this._place = cardData.place;
         this._link = cardData.link;
         this._cardSelector = cardSelector;
-        this._card = this._getTemplate()
-        this._cardImg = this._card.querySelector('.card__img');
-        this._cardText = this._card.querySelector('.card__text');
-
     }
 
     _getTemplate() {
@@ -14,7 +10,6 @@ class Card {
             .querySelector(this._cardSelector)
             .content
             .cloneNode(true).firstElementChild;
-
     }
 
     _addListeners(clickCallback) {
@@ -35,6 +30,9 @@ class Card {
     }
 
     createCard(clickCallback) {
+        this._card = this._getTemplate()
+        this._cardImg = this._card.querySelector('.card__img');
+        this._cardText = this._card.querySelector('.card__text');
         this._cardImg.src = this._link;
         this._cardImg.alt = this._place;
         this._cardText.innerText = this._place;
@@ -43,4 +41,5 @@ class Card {
     }
 
 }
+
 export {Card};

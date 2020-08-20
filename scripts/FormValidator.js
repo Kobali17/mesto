@@ -38,15 +38,16 @@ class FormValidator {
         const buttonElement = this.element.querySelector(this.submitButtonSelector);
         const inputList = Array.from(this.element.querySelectorAll(this.inputSelector));
         this._toggleButton(inputList, buttonElement);
-
     }
 
     _toggleButton = (inputList, buttonElement) => {
         // включает кнопку если все элементы прошли валидацию
         if (this._hasInvalidInput(inputList)) {
             buttonElement.classList.add(this.inactiveButtonClass);
+            buttonElement.disabled = true;
         } else {
             buttonElement.classList.remove(this.inactiveButtonClass);
+            buttonElement.disabled = false;
         }
     };
 
@@ -55,7 +56,6 @@ class FormValidator {
         const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
         errorElement.textContent = errorMessage;
         errorElement.classList.add(this.errorClass);
-
     }
 
     _hideError(formElement, inputElement) {

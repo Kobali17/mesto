@@ -15,6 +15,8 @@ const popupAdd = document.querySelector('#photo-add');
 const linkInput = document.querySelector('#link');
 const placeInput = document.querySelector('#place');
 const overlay = document.querySelector('.overlay');
+const popupEdit = document.querySelector('#edit');
+const photoPopup = document.querySelector('.popup-photo');
 const selectorDict = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
@@ -60,12 +62,10 @@ const photoSubmitHandler = (evt) => {
 }
 
 const toggleEditPopup = () => {
-    const popupEdit = document.querySelector('#edit');
     popupEdit.classList.toggle("popup_opened");
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
     overlayToggle();
-
 }
 
 const overlayToggle = () => {
@@ -78,14 +78,11 @@ const toggleAddPopup = () => {
     placeInput.value = "";
     linkInput.value = "";
     overlayToggle();
-
 }
 
 const togglePhotoPopup = () => {
-    const photoPopup = document.querySelector('.popup-photo');
     photoPopup.classList.toggle("popup_opened");
     overlayToggle();
-
 }
 
 
