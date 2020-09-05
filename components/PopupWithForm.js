@@ -12,23 +12,18 @@ export class PopupWithForm extends Popup {
         return this._allInputs.map(function (item) {
             return item.value
         })
-
     }
-
 
     setEventListeners() {
         super.setEventListeners();
         this._form.addEventListener('submit', this._submitCallback);
-        this._form.addEventListener('submit',
-            this.close);
-
+        this._form.addEventListener('submit', this.close);
     }
 
     close = () => {
         super.close();
         this._form.removeEventListener('submit', this._submitCallback);
-        this._form.removeEventListener('submit',
-            this.close);
+        this._form.removeEventListener('submit', this.close);
         return this._allInputs.forEach(function (item) {
             item.value = ""
         })
