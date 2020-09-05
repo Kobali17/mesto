@@ -1,8 +1,9 @@
 class Card {
-    constructor(cardData, cardSelector) {
+    constructor(cardData, cardSelector, handleCardClick) {
         this._place = cardData.place;
         this._link = cardData.link;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -12,14 +13,15 @@ class Card {
             .cloneNode(true).firstElementChild;
     }
 
-    _addListeners(clickCallback) {
+    _addListeners() {
         this._likeButton = this._card.querySelector('.card__like-button');
         this._delButton = this._card.querySelector('.card__del-button');
         this._likeButton.addEventListener('click', this._toggleCardLiked)
         this._delButton.addEventListener('click', this._delCard)
         this._cardImg.addEventListener('click', () => {
-            clickCallback(this._link, this._place)
+            this._handleCardClick({link: this._link, place: this._place})
         })
+
     }
 
     _toggleCardLiked = () => {
@@ -29,14 +31,14 @@ class Card {
         this._card.remove()
     }
 
-    createCard(clickCallback) {
+    createCard() {
         this._card = this._getTemplate()
         this._cardImg = this._card.querySelector('.card__img');
         this._cardText = this._card.querySelector('.card__text');
         this._cardImg.src = this._link;
         this._cardImg.alt = this._place;
         this._cardText.innerText = this._place;
-        this._addListeners(clickCallback)
+        this._addListeners()
         return this._card
     }
 
