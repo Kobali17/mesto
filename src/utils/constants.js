@@ -4,12 +4,8 @@ export const openEditPopupButton = document.querySelector('.profile__edit-button
 export const openAddPopupButton = document.querySelector('.profile__add-card-button')
 export const nameInput = document.querySelector('#name');
 export const jobInput = document.querySelector('#job');
-export const profileName = document.querySelector('.profile__name');
-export const profileJob = document.querySelector('.profile__job');
 export const formNameElement = document.querySelector('#profile-form');
 export const formPhotoElement = document.querySelector('#photo-form');
-export const linkInput = document.querySelector('#link');
-export const placeInput = document.querySelector('#place');
 export const selectorDict = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',

@@ -9,21 +9,22 @@ export class PopupWithForm extends Popup {
     }
 
     _getInputValues() {
-        return this._allInputs.map(function (item) {
-            return item.value
-        })
+        const formValues = {};
+        this._allInputs.forEach(input => formValues[input.name] = input.value);
+        return formValues;
     }
 
     setEventListeners() {
         super.setEventListeners();
-        this._form.addEventListener('submit', this._submitCallback);
-        this._form.addEventListener('submit', this.close);
+        this._form.addEventListener('submit', (evt) => {
+            evt.preventDefault();
+            this._submitCallback(this._getInputValues())
+            this.close()
+        });
     }
 
     close = () => {
         super.close();
-        this._form.removeEventListener('submit', this._submitCallback);
-        this._form.removeEventListener('submit', this.close);
         return this._allInputs.forEach(function (item) {
             item.value = ""
         })

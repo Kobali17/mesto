@@ -25,10 +25,11 @@ class Card {
     }
 
     _toggleCardLiked = () => {
-        this._likeButton.classList.toggle("card_liked");
+        this._likeButton.classList.toggle('card_liked');
     }
     _delCard = () => {
-        this._card.remove()
+        this._card.remove();
+        this._card = null;
     }
 
     createCard() {
