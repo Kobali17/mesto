@@ -24,8 +24,7 @@ const imagePopup = new PopupWithImage('.popup-photo');
 
 const addNewCard = (item) => {
     const card = new Card(item, '#card', openPhotoPopup);
-    const cardElement = card.createCard(open);
-    document.querySelector('.photo-grid').prepend(cardElement);
+    return card.createCard(open);
 }
 
 const profileFormSubmitHandler = (values) => {
@@ -35,7 +34,7 @@ const profileFormSubmitHandler = (values) => {
 const profileAddSubmitHandler = (values) => {
     const link = values.link;
     const place = values.place;
-    addNewCard({link, place});
+    section.addItem(addNewCard({link, place}))
 }
 
 const openPhotoPopup = (item) => {
@@ -64,4 +63,5 @@ openAddPopupButton.addEventListener('click', openAddPopup);
 
 new FormValidator(selectorDict, formNameElement).enableValidation(profileEditButton)
 new FormValidator(selectorDict, formPhotoElement).enableValidation(cardAddButton);
-new Section({items: cards, renderer: addNewCard}, '.photo-grid').renderItems();
+const section = new Section({items: cards, renderer: addNewCard}, '.photo-grid');
+section.renderItems();

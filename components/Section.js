@@ -6,12 +6,22 @@ export class Section {
     }
 
     renderItems() {
-        this._items.forEach(item => {
+        const renderedItems = this._items.map(item =>
             this._renderer(item)
-        })
+        )
+
+        this.addItem(renderedItems)
     }
 
     addItem(element) {
-        this._container.append(element);
+        if (Array.isArray(element)) {
+            element.forEach(item =>
+                this._container.append(item)
+            )
+
+        } else {
+            this._container.prepend(element);
+        }
+
     }
 }
