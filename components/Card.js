@@ -1,6 +1,6 @@
 class Card {
     constructor(cardData, cardSelector, handleCardClick) {
-        this._place = cardData.place;
+        this._place = cardData.name;
         this._link = cardData.link;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
