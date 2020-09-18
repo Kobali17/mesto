@@ -5,6 +5,7 @@
 @import url(__job/profile__job.css);
 @import url(__name/profile__name.css);
 @import url(__first/profile__first.css);
+@import url(__avatar-edit-button/profile__avatar-edit-button.css);
 
 .profile {
     max-width: 882px;

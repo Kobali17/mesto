@@ -3,11 +3,20 @@ export class Popup {
         this._popup = document.querySelector(popupSelector)
         this._overlay = document.querySelector('.overlay')
         this._closeButton = this._popup.querySelector('.popup__close-button');
+        this._submitButton = this._popup.querySelector('.popup__save-button');
     }
 
     _handleEscClose = (evt) => {
         if (evt.key === 'Escape') {
             this.close()
+        }
+    }
+
+    renderLoading(isLoading) {
+        if (isLoading) {
+            this._submitButton.textContent = 'Сохранение...'
+        } else {
+            this._submitButton.textContent = 'Сохранить'
         }
     }
 
