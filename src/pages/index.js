@@ -47,9 +47,13 @@ const handleLikeClick = (card) => {
         card.likeCounter(res.likes, res.likes.some((user) => user._id === userInfo.getUserId()))
     }
     if (!card.getCardLiked()) {
-        api.takeCardLike(card.getCardId()).then(handleLikeResponse)
+        api.takeCardLike(card.getCardId()).then(handleLikeResponse).catch((err) => {
+            console.log(err);
+        })
     } else {
-        api.delCardLke(card.getCardId()).then(handleLikeResponse)
+        api.removeCardLke(card.getCardId()).then(handleLikeResponse).catch((err) => {
+            console.log(err);
+        })
     }
 }
 
@@ -67,27 +71,41 @@ const handleDelClick = (card) => {
 const profileFormSubmitHandler = (values) => {
     editPopup.renderLoading(true)
     api.patchUserData(values).then((result) => {
+        editPopup.close()
         userInfo.setUserInfo(result.name, result.about)
         editPopup.renderLoading(false)
+    }).catch((err) => {
+        console.log(err);
     })
 }
 
 const avatarSubmitHandler = (values) => {
     avatarPopup.renderLoading(true)
     api.patchUserAvatar(values).then((res) => {
+        avatarPopup.close()
         userInfo.setUserAvatar(res.avatar)
         avatarPopup.renderLoading(false)
+    }).catch((err) => {
+        console.log(err);
     })
 }
 
 const profileAddSubmitHandler = (values) => {
     photoPopup.renderLoading(true)
-    api.addUserCard(values).then(res => section.addItem(addNewCard(res)))
-    photoPopup.renderLoading(false)
+    api.addUserCard(values).then(res => {
+        section.addItem(addNewCard(res))
+        photoPopup.renderLoading(false)
+        photoPopup.close()
+    }).catch((err) => {
+        console.log(err);
+    })
+
 }
 
 const delSubmitHandler = (card) => {
-    api.delCard(card.getCardId()).then(() => card.delCard())
+    api.delCard(card.getCardId()).then(() => card.delCard()).catch((err) => {
+        console.log(err);
+    })
 }
 
 const openEditPopup = () => {
@@ -109,6 +127,8 @@ const loadCards = () => {
     api.getInitialCards().then((result) => {
         section = new Section({items: result, renderer: addNewCard}, '.photo-grid');
         section.renderItems();
+    }).catch((err) => {
+        console.log(err);
     });
 }
 
@@ -117,6 +137,8 @@ const loadUser = () => {
         userInfo.setUserInfo(result.name, result.about)
         userInfo.setUserAvatar(result.avatar)
         userInfo.setUserId(result._id)
+    }).catch((err) => {
+        console.log(err);
     });
 }
 
@@ -139,9 +161,6 @@ new FormValidator(selectorDict, formNameElement).enableValidation(openEditPopupB
 new FormValidator(selectorDict, formPhotoElement).enableValidation(openAddPopupButton);
 new FormValidator(selectorDict, formAvatarElement).enableValidation(openAvatarEditButton);
 
-loadUser().then(loadCards)
-
-
-
-
-
+loadUser().then(loadCards).catch((err) => {
+    console.log(err);
+})

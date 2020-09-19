@@ -1,6 +1,6 @@
 export class Api {
     constructor(options) {
-        this._header = options.headers;
+        this._headers = options.headers;
         this._baseUrl = options.baseUrl;
     }
 
@@ -19,7 +19,7 @@ export class Api {
         return this._fetch(`/cards/likes/${cardId}`, 'PUT')
     }
 
-    delCardLke(cardId) {
+    removeCardLke(cardId) {
         return this._fetch(`/cards/likes/${cardId}`, 'DELETE')
     }
 
@@ -49,15 +49,13 @@ export class Api {
         return fetch(this._baseUrl + url, {
             method: method,
             headers:
-            this._header,
+            this._headers,
             body: body
         }).then(res => {
             if (res.ok) {
                 return res.json();
             }
             return Promise.reject(`Ошибка: ${res.status}`);
-        }).catch((err) => {
-            console.log(err);
         });
     }
 }
